@@ -57,17 +57,20 @@ public class RoomController {
     }
 
     @GetMapping("showList/{id}")
-    public HashMap<String, Object> selectList(@PathVariable Long id) {
-        HashMap<String, Object> resultMap = new HashMap<>();
-        List<RoomTypeDto> roomTypeDtoList = ROOM_TYPE_SERVICE.selectAll();
+    public Map<String, Object> selectList(@PathVariable Long id) {
+        Map<String, Object> resultMap = new HashMap<>();
 
+        // RoomType과 Room 데이터 가져오기
+        List<RoomTypeDto> roomTypeDtoList = ROOM_TYPE_SERVICE.selectAll();
         List<RoomDto> roomDtoList = ROOM_SERVICE.selectAll(id);
 
+        // 각 roomDto에 이미지 리스트 설정
         for (RoomDto roomDto : roomDtoList) {
-            roomDto.setImageList(ROOM_FILE_SERVICE.findByRoomIdToName(roomDto.getId()));
+            List<String> imageList = ROOM_FILE_SERVICE.findByRoomIdToName(roomDto.getId());
+            roomDto.setImageList(imageList);
         }
 
-
+        // 결과를 resultMap에 추가
         resultMap.put("roomTypeList", roomTypeDtoList);
         resultMap.put("roomList", roomDtoList);
 

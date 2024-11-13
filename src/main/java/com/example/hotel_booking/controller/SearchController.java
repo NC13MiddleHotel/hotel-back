@@ -37,28 +37,28 @@ public class SearchController {
         String hotelName = (String) data.get("hotelName");
 
         List<Long> gradeList = new ArrayList<>();
-        if (gradeIntegerList != null) {
+        if (gradeIntegerList != null && !gradeIntegerList.isEmpty()) {
             for (int gradeInteger : gradeIntegerList) {
                 gradeList.add((long) gradeInteger);
             }
         }
 
         List<Long> cityIdList = new ArrayList<>();
-        if (cityIdIntegerList != null) {
+        if (cityIdIntegerList != null && !cityIdIntegerList.isEmpty()) {
             for (int cityIdInteger : cityIdIntegerList) {
                 cityIdList.add((long) cityIdInteger);
             }
         }
 
         List<Long> facilityIdList = new ArrayList<>();
-        if (facilityIdIntegerList != null) {
+        if (facilityIdIntegerList != null && !facilityIdIntegerList.isEmpty()) {
             for (int facilityIdInteger : facilityIdIntegerList) {
                 facilityIdList.add((long) facilityIdInteger);
             }
         }
 
         List<Long> roomTypeIdList = new ArrayList<>();
-        if (roomTypeIdIntegerList != null) {
+        if (roomTypeIdIntegerList != null && !roomTypeIdIntegerList.isEmpty()) {
             for (int roomTypeIdInteger : roomTypeIdIntegerList) {
                 roomTypeIdList.add((long) roomTypeIdInteger);
             }
